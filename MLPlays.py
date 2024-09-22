@@ -19,7 +19,7 @@ if np.isnan(predWeek.week.max()):
 else:
     predWeek = predWeek.week.max() + 1
 
-predWeek=3
+#predWeek=3
 
 # Prepare dataframe by dropping irrelevant predictors and formatting columns for KNN
 df = df[df.result != 0]
