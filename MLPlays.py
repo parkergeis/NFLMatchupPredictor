@@ -11,7 +11,7 @@ warnings.filterwarnings('ignore')
 today = dt.date.today()
 year = today.year
 
-df = nfl.import_schedules(years=range(year-5,year+1))
+df = nfl.import_schedules(years=range(year-3,year+1))
 currSeason = df[df.season == year]
 predWeek = currSeason[['week', 'total']].dropna()
 if np.isnan(predWeek.week.max()):
@@ -57,10 +57,10 @@ y_test = test_df.Home
 model = xgb.XGBClassifier(
     use_label_encoder=False,
     eval_metric='logloss',
-    max_depth=6,  # Limit the depth of the trees
-    learning_rate=0.1,
-    n_estimators=1000,  # Use a large number of trees
-    reg_alpha=0.1,  # L1 regularization term on weights
+    max_depth=3,  # Limit the depth of the trees
+    learning_rate=0.01,
+    n_estimators=100,  # Use a large number of trees
+    reg_alpha=0.5,  # L1 regularization term on weights
     reg_lambda=0.1,  # L2 regularization term on weights
     early_stopping_rounds=10  # Stop early if validation score doesn't improve
 )
